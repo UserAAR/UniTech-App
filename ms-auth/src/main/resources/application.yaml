@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: ms-auth
+
+  datasource:
+#    url: ${DB_URL:jdbc:postgresql://autorack.proxy.rlwy.net:27243/railway}
+    url: ${DB_URL:jdbc:postgresql://dpg-csqv7g23esus738545dg-a.oregon-postgres.render.com:5432/ms_auth}
+    username: ${DB_USERNAME:unitech}
+    password: ${DB_PASSWORD:oiZrUfzXVRngykZgP3hQhiL6Cleuhbbs}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+  liquibase:
+    change-log: classpath:db.changelog/db.changelog.yaml
+    enabled: true
+    drop-first: false
+    database-change-log-table: change_log
+    database-change-log-lock-table: change_log_lock
+
+server:
+  port: 8081
+
+
+application:
+  security:
+    secret-key: c2VjdXJlLXNlY3JldC1rZXktZm9yLUpXVC1lbmNyeXB0aW9uLTMyYnl0ZXM=
+    jwt:
+      expiration: 900000
+      refresh-token:
+        expiration: 86400000
