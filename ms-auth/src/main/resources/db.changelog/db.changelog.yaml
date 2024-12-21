@@ -1,3 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db.changelog/v-1.0/db.changelog-create-users-table.yaml
