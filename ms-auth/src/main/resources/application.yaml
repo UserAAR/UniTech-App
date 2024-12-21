@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: ms-auth
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/ms_auth}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+    open-in-view: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+
+  liquibase:
+    change-log: classpath:db.changelog/db.changelog.yaml
+    enabled: true
+    drop-first: false
+    database-change-log-table: change_log
+    database-change-log-lock-table: change_log_lock
+
+server:
+  port: 8081
+
+
+application:
+  security:
+    secret-key: c2VjdXJlLXNlY3JldC1rZXktZm9yLUpXVC1lbmNyeXB0aW9uLTMyYnl0ZXM=
+    jwt:
+      expiration: 900000
+      refresh-token:
+        expiration: 86400000
+
+
+feign:
+  client:
+    config:
+      ms-transfer-client:
+        url: https://ms-transfer-dev.up.railway.app/api/v1/accounts

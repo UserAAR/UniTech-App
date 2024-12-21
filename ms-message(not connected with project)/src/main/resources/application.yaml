@@ -1,0 +1,60 @@
+spring:
+  application:
+  name: ms-message
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sarxan.huseyn.21@gmail.com
+    password: rbfi fgkh sktu qgwi
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+ms-message:
+  email:
+    sender: sarxan.huseyn.21@gmail.com
+  otp:
+    expiration: 5
+  messages:
+    register:
+      subject: "Welcome to Our Bank!"
+      body: >
+        Dear User,
+
+        Thank you for registering with UniTechBank. We’re excited to have you on board!
+        You can now access our online banking services and manage your finances with ease.
+
+        If you didn’t register for this account, please contact our support team immediately.
+
+        Best regards,  
+        UniTechBank Team  
+        Contact: unitechbank1@gmail.com
+    transfer_money:
+      subject: "Secure Your Transaction - Transfer Money OTP"
+      body: >
+        Dear User,
+
+        You requested to authorize a money transfer.  
+        Your one-time password (OTP) is: **{otp}**
+
+        Please enter this code in the next 5 minutes to complete the transaction.  
+        If you didn’t initiate this transfer, please secure your account immediately by contacting our support team.
+
+        Remember, never share this code with anyone.
+
+        Best regards,  
+        UniTechBank Security Team  
+        Contact: unitechbank1@gmail.com
+    

@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: bff
+
+server:
+  port: 8080
+
+auth-service:
+  url: ${AUTH_SERVICE_URL:http://localhost:8081/api/v1/auth}
+
+user-service:
+  url: ${USER_SERVICE_URL:http://localhost:8081/api/v1/users}
+
+account/transfer-service:
+  url: ${ACCOUNT_TRANSFER_SERVICE_URL:http://localhost:8082/api/v1/accounts}
+
+currency-service:
+  url: ${CURRENCY_SERVICE_URL:http://localhost:8082/api/v1/rates}
+
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+        logger-level: FULL
+
+logging:
+  level:
+    org.springframework.cloud.openfeign: DEBUG
